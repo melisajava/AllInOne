@@ -95,14 +95,14 @@ public class UIStepDefs extends BasePage {
     }
 
 
-    String fullNameAPI = APIStepDefs.randomDataMap.get("full_name").toString();
-    String emailAPI = APIStepDefs.randomDataMap.get("email").toString();
-    String passwordAPI = DB_Util.convertingPassword(APIStepDefs.randomDataMap.get("password").toString());
-    String userGroupIdAPI = APIStepDefs.randomDataMap.get("user_group_id").toString();
-    String statusAPI = APIStepDefs.randomDataMap.get("status").toString();
-    String startDateAPI = APIStepDefs.randomDataMap.get("start_date").toString();
-    String endDateAPI = APIStepDefs.randomDataMap.get("end_date").toString();
-    String addressAPI = APIStepDefs.randomDataMap.get("address").toString();
+//    String fullNameAPI = (String.valueOf(APIStepDefs.randomDataMap.get("full_name"))).toString();
+//    String emailAPI = (String.valueOf(APIStepDefs.randomDataMap.get("email"))).toString();
+//    Object passwordAPI = DB_Util.convertingPassword(APIStepDefs.randomDataMap.get("password").toString());
+//    String userGroupIdAPI = (String.valueOf(APIStepDefs.randomDataMap.get("user_group_id"))).toString();
+//    String statusAPI = (String.valueOf(APIStepDefs.randomDataMap.get("status"))).toString();
+//    String startDateAPI = (String.valueOf(APIStepDefs.randomDataMap.get("start_date"))).toString();
+//    String endDateAPI = (String.valueOf(APIStepDefs.randomDataMap.get("end_date"))).toString();
+//    String addressAPI = (String.valueOf(APIStepDefs.randomDataMap.get("address"))).toString();
 
 
     @And("created user information should match with Database")
@@ -118,14 +118,24 @@ public class UIStepDefs extends BasePage {
         userFromDataBase = DB_Util.getRowMap(1);
         System.out.println("userFromDataBase = " + userFromDataBase);
 
-        assertEquals(userFromDataBase.get("full_name"), fullNameAPI);
-        assertEquals(userFromDataBase.get("email"), emailAPI);
-        assertEquals(userFromDataBase.get("password"), passwordAPI);
-        assertEquals(userFromDataBase.get("user_group_id"), userGroupIdAPI);
-        assertEquals(userFromDataBase.get("status"), statusAPI);
-        assertEquals(userFromDataBase.get("start_date"), startDateAPI);
-        assertEquals(userFromDataBase.get("end_date"), endDateAPI);
-        assertEquals(userFromDataBase.get("address"), addressAPI);
+
+        assertEquals(userFromDataBase.get("full_name"),APIStepDefs.randomDataMap.get("full_name"));
+        assertEquals(userFromDataBase.get("email"),APIStepDefs.randomDataMap.get("email"));
+        assertEquals(userFromDataBase.get("password"), DB_Util.convertingPassword(APIStepDefs.randomDataMap.get("password").toString()));
+        assertEquals(userFromDataBase.get("user_group_id"),APIStepDefs.randomDataMap.get("user_group_id"));
+        assertEquals(userFromDataBase.get("status"),APIStepDefs.randomDataMap.get("status"));
+        assertEquals(userFromDataBase.get("start_date"),APIStepDefs.randomDataMap.get("start_date"));
+        assertEquals(userFromDataBase.get("end_date"),APIStepDefs.randomDataMap.get("end_date"));
+        assertEquals(userFromDataBase.get("address"),APIStepDefs.randomDataMap.get("address"));
+
+//        assertEquals(userFromDataBase.get("full_name"), fullNameAPI);
+//        assertEquals(userFromDataBase.get("email"), emailAPI);
+//        assertEquals(userFromDataBase.get("password"), passwordAPI);
+//        assertEquals(userFromDataBase.get("user_group_id"), userGroupIdAPI);
+//        assertEquals(userFromDataBase.get("status"), statusAPI);
+//        assertEquals(userFromDataBase.get("start_date"), startDateAPI);
+//        assertEquals(userFromDataBase.get("end_date"), endDateAPI);
+//        assertEquals(userFromDataBase.get("address"), addressAPI);
 
     }
 
@@ -156,7 +166,7 @@ public class UIStepDefs extends BasePage {
 
         String fullName = userFromDataBase.get("full_name").toString();
         System.out.println("fullName = " + fullName);
-        System.out.println("fullNameAPI = " + fullNameAPI);
+        //System.out.println("fullNameAPI = " + fullNameAPI);
        
 
 
