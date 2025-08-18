@@ -1,4 +1,4 @@
-@wip
+@wip3
 Feature: As a librarian, I want to create a new book
 
 
